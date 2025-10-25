@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <!-- 2. Links `style.css` in the `<head>` section for styling. -->
+    <!-- Connections: Links `style.css` via `<link rel='stylesheet' href='style.css'>` in the `<head>` section. -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 3. Creates a main container `div` for the calculator. -->
+    <div class="calculator">
+        <!-- 4. Inside the container, creates a display area `div` to show input and results. -->
+        <!-- Connections: Provides the DOM elements (e.g., `<div class='calculator-display'>`) that `script.js` targets for event handling and display updates, and `style.css` targets for styling. -->
+        <div class="calculator-display" data-display>0</div>
+
+        <!-- 5. Creates a grid of buttons, including numbers (0-9), operators (+, -, *, /), clear (AC), and equals (=). -->
+        <div class="calculator-buttons">
+            <!-- Clear button -->
+            <!-- 6. Each button will have a `data-action` attribute to identify its type (e.g., 'number', 'operator', 'clear', 'equals'). -->
+            <button data-action="clear">AC</button>
+
+            <!-- Operators -->
+            <button data-action="operator">/</button>
+            <button data-action="operator">*</button>
+            <button data-action="operator">-</button>
+
+            <!-- Numbers 7, 8, 9 -->
+            <button data-action="number">7</button>
+            <button data-action="number">8</button>
+            <button data-action="number">9</button>
+            <!-- Operator + -->
+            <button data-action="operator">+</button>
+
+            <!-- Numbers 4, 5, 6 -->
+            <button data-action="number">4</button>
+            <button data-action="number">5</button>
+            <button data-action="number">6</button>
+            <!-- Decimal point -->
+            <button data-action="decimal">.</button>
+
+            <!-- Numbers 1, 2, 3 -->
+            <button data-action="number">1</button>
+            <button data-action="number">2</button>
+            <button data-action="number">3</button>
+            <!-- Equals button -->
+            <button data-action="equals">=</button>
+
+            <!-- Number 0 -->
+            <button data-action="number" class="zero-button">0</button>
+        </div>
+    </div>
+
+    <!-- 7. Links `script.js` at the end of the `<body>` section to ensure the DOM is fully loaded before script execution. -->
+    <!-- Connections: Links `script.js` via `<script src='script.js'></script>` at the end of the `<body>` section. -->
+    <script src="script.js"></script>
+</body>
+</html>
