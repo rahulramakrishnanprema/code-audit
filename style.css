@@ -1,66 +1,86 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #00AAFF, #00FF6C);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #00AAFF, #00FF6C);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .calculator-grid {
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    min-height: 100vh; /* Ensures it takes full viewport height for centering */
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden; /* Ensures display corners are rounded */
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
-.calculator-display {
-    grid-column: 1 / -1; /* Spans all columns */
-    background-color: rgba(0, 0, 0, .75);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-around;
-    padding: 15px;
-    word-wrap: break-word;
-    word-break: break-all;
-    text-align: right;
-    color: white;
-    font-size: 2.5rem;
-    min-height: 120px; /* Ensure display has a minimum height */
-    box-sizing: border-box; /* Include padding in height calculation */
+.output {
+  grid-column: 1 / -1; /* Spans all columns */
+  background-color: rgba(0, 0, 0, .75);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
-.calculator-button {
-    cursor: pointer;
-    font-size: 2rem;
-    border: 1px solid white;
-    outline: none;
-    background-color: rgba(255, 255, 255, .75);
-    color: #333;
-    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+.output .previous-operand {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.5rem;
 }
 
-.calculator-button:hover {
-    background-color: rgba(255, 255, 255, .9);
-    color: #000;
+.output .current-operand {
+  color: white;
+  font-size: 2.5rem;
 }
 
-.operator {
-    background-color: #FF9500; /* Orange for operators */
-    color: white;
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, .75);
 }
 
-.operator:hover {
-    background-color: #FFB040;
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, .9);
 }
 
-.span-two {
-    grid-column: span 2;
+.calculator-grid > button:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 0 6px rgba(0, 170, 255, 0.7); /* Custom focus ring */
+}
+
+.calculator-grid > button.operator {
+  background-color: rgba(255, 165, 0, 0.75); /* Orange-ish */
+}
+
+.calculator-grid > button.operator:hover {
+  background-color: rgba(255, 165, 0, 0.9);
+}
+
+.calculator-grid > button.span-two {
+  grid-column: span 2;
+}
+
+.calculator-grid > button.clear {
+  background-color: #FF6347; /* Tomato red */
+}
+
+.calculator-grid > button.clear:hover {
+  background-color: #FF4500; /* Orange Red */
+}
+
+.calculator-grid > button.equals {
+  background-color: #20B2AA; /* Light Sea Green */
+}
+
+.calculator-grid > button.equals:hover {
+  background-color: #008B8B; /* Dark Cyan */
 }
