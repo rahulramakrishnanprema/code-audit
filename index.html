@@ -7,28 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator-grid">
-        <div class="output">
-            <div data-previous-operand class="previous-operand"></div>
-            <div data-current-operand class="current-operand"></div>
+    <div id="calculator" class="calculator">
+        <div id="display" class="calculator-display">0</div>
+        <div id="buttons-grid" class="calculator-buttons">
+            <!-- Row 1: Clear and Operators -->
+            <button data-type="clear" id="btn-clear">C</button>
+            <button data-type="operator" id="btn-divide">/</button>
+            <button data-type="operator" id="btn-multiply">*</button>
+            <button data-type="operator" id="btn-subtract">-</button>
+
+            <!-- Row 2: Numbers 7, 8, 9 and Add Operator -->
+            <button data-type="number" id="btn-7">7</button>
+            <button data-type="number" id="btn-8">8</button>
+            <button data-type="number" id="btn-9">9</button>
+            <button data-type="operator" id="btn-add">+</button>
+
+            <!-- Row 3: Numbers 4, 5, 6 and Number 1 (to complete 4x4 grid) -->
+            <button data-type="number" id="btn-4">4</button>
+            <button data-type="number" id="btn-5">5</button>
+            <button data-type="number" id="btn-6">6</button>
+            <button data-type="number" id="btn-1">1</button>
+
+            <!-- Row 4: Numbers 2, 3, 0 and Equals -->
+            <button data-type="number" id="btn-2">2</button>
+            <button data-type="number" id="btn-3">3</button>
+            <button data-type="number" id="btn-0">0</button>
+            <button data-type="equals" id="btn-equals">=</button>
         </div>
-        <button data-all-clear class="span-two">C</button>
-        <button data-operator>/</button>
-        <button data-operator>*</button>
-        <button data-number>7</button>
-        <button data-number>8</button>
-        <button data-number>9</button>
-        <button data-operator>-</button>
-        <button data-number>4</button>
-        <button data-number>5</button>
-        <button data-number>6</button>
-        <button data-operator>+</button>
-        <button data-number>1</button>
-        <button data-number>2</button>
-        <button data-number>3</button>
-        <button data-number>.</button>
-        <button data-number class="span-two">0</button>
-        <button data-equals class="span-two">=</button>
     </div>
     <script src="script.js" defer></script>
 </body>
