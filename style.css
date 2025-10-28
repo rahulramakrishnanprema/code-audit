@@ -1,100 +1,100 @@
+/* Basic reset styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0; /* Light grey background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #74ebd5, #9face6); /* A pleasant gradient background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden; /* Prevent scrollbars if content slightly exceeds viewport */
 }
 
-.calculator {
-    background-color: #333; /* Dark grey calculator body */
-    border: 1px solid #222;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    width: 320px;
-    padding: 15px;
+/* Calculator container styles */
+.calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 100px); /* 4 columns, each 100px wide */
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* Display row, then 5 button rows */
+  background-color: #333; /* Dark background for the calculator body */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+  overflow: hidden; /* Ensures rounded corners are applied correctly */
 }
 
+/* Calculator display area styles */
 .calculator-display {
-    background-color: #222; /* Even darker grey for display */
-    color: #fff;
-    font-size: 2.5em;
-    text-align: right;
-    padding: 20px 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    overflow: hidden; /* Ensures long numbers don't break layout */
-    white-space: nowrap; /* Prevents numbers from wrapping */
-    text-overflow: ellipsis; /* Adds ellipsis for overflow */
+  grid-column: 1 / -1; /* Spans across all columns */
+  background-color: #222; /* Slightly darker background for the display */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around; /* Distributes space between previous and current operands */
+  padding: 10px;
+  word-wrap: break-word; /* Allows long numbers to wrap */
+  word-break: break-all; /* Breaks words at any character to prevent overflow */
+  color: #fff; /* White text color */
+  text-align: right;
+  min-height: 120px; /* Matches the grid-template-rows definition */
+  font-weight: 300; /* Lighter font weight for a modern look */
 }
 
-.calculator-buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns, equal width */
-    grid-gap: 10px; /* Gap between buttons */
+.calculator-display .previous-operand {
+  font-size: 1.5em;
+  color: rgba(255, 255, 255, 0.75); /* Slightly transparent for previous operand */
 }
 
-.calculator-buttons button {
-    height: 60px; /* Consistent button height */
-    font-size: 1.5em;
-    border: none;
-    border-radius: 8px;
-    background-color: #e0e0e0; /* Light grey for number buttons */
-    color: #333;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    padding: 0; /* Remove default padding */
+.calculator-display .current-operand {
+  font-size: 2.5em;
 }
 
-.calculator-buttons button:hover {
-    background-color: #d0d0d0;
-    transform: translateY(-1px);
+/* Individual button styles */
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2em;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border between buttons */
+  outline: none; /* Remove focus outline */
+  background-color: rgba(255, 255, 255, 0.75); /* Semi-transparent white for numbers */
+  color: #333; /* Dark text for numbers */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition for hover effects */
 }
 
-.calculator-buttons button:active {
-    background-color: #c0c0c0;
-    transform: translateY(0);
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.9); /* Lighter on hover */
 }
 
-.calculator-buttons button[data-type="operator"] {
-    background-color: #ff9500; /* Orange for operators */
-    color: #fff;
+/* Specific styles for operator buttons */
+.calculator-grid > button[data-operator] {
+  background-color: #f90; /* Orange for operators */
+  color: #fff; /* White text for operators */
 }
 
-.calculator-buttons button[data-type="operator"]:hover {
-    background-color: #e68a00;
+.calculator-grid > button[data-operator]:hover {
+  background-color: #ffaa33; /* Lighter orange on hover */
 }
 
-.calculator-buttons button[data-type="clear"] {
-    background-color: #d9534f; /* Red for clear button */
-    color: #fff;
+/* Specific styles for the equals button */
+.calculator-grid > button[data-equals] {
+  grid-column: span 2; /* Spans two columns */
+  background-color: #0c0; /* Green for equals */
+  color: #fff; /* White text for equals */
 }
 
-.calculator-buttons button[data-type="clear"]:hover {
-    background-color: #c9302c;
+.calculator-grid > button[data-equals]:hover {
+  background-color: #33cc33; /* Lighter green on hover */
 }
 
-.calculator-buttons button[data-type="equals"] {
-    background-color: #5cb85c; /* Green for equals button */
-    color: #fff;
-    grid-column: span 2; /* Make equals button span two columns if desired, though spec implies 4x4 strict */
-    /* If equals should only span 1 column, remove the above line.
-       For this implementation, I'll assume a standard 4x4 grid without spanning,
-       as the spec's `grid-template-columns: repeat(4, 1fr)` implies strict 4 columns.
-       I will remove `grid-column: span 2;` to strictly adhere to the 4x4 grid implied.
-    */
+/* Specific styles for the clear button */
+.calculator-grid > button[data-all-clear] {
+  grid-column: span 2; /* Spans two columns */
+  background-color: #c00; /* Red for clear */
+  color: #fff; /* White text for clear */
 }
 
-.calculator-buttons button[data-type="equals"]:hover {
-    background-color: #4cae4c;
+.calculator-grid > button[data-all-clear]:hover {
+  background-color: #ff3333; /* Lighter red on hover */
 }
-
-/* Optional: Style for the zero button to span two columns if needed,
-   but again, sticking to strict 4x4 as per spec.
-.calculator-buttons button[data-value="0"] {
-    grid-column: span 2;
-}
-*/
