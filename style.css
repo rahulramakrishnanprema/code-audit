@@ -1,0 +1,100 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Light grey background */
+}
+
+.calculator {
+    background-color: #333; /* Dark grey calculator body */
+    border: 1px solid #222;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    padding: 15px;
+}
+
+.calculator-display {
+    background-color: #222; /* Even darker grey for display */
+    color: #fff;
+    font-size: 2.5em;
+    text-align: right;
+    padding: 20px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures long numbers don't break layout */
+    white-space: nowrap; /* Prevents numbers from wrapping */
+    text-overflow: ellipsis; /* Adds ellipsis for overflow */
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns, equal width */
+    grid-gap: 10px; /* Gap between buttons */
+}
+
+.calculator-buttons button {
+    height: 60px; /* Consistent button height */
+    font-size: 1.5em;
+    border: none;
+    border-radius: 8px;
+    background-color: #e0e0e0; /* Light grey for number buttons */
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    padding: 0; /* Remove default padding */
+}
+
+.calculator-buttons button:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-1px);
+}
+
+.calculator-buttons button:active {
+    background-color: #c0c0c0;
+    transform: translateY(0);
+}
+
+.calculator-buttons button[data-type="operator"] {
+    background-color: #ff9500; /* Orange for operators */
+    color: #fff;
+}
+
+.calculator-buttons button[data-type="operator"]:hover {
+    background-color: #e68a00;
+}
+
+.calculator-buttons button[data-type="clear"] {
+    background-color: #d9534f; /* Red for clear button */
+    color: #fff;
+}
+
+.calculator-buttons button[data-type="clear"]:hover {
+    background-color: #c9302c;
+}
+
+.calculator-buttons button[data-type="equals"] {
+    background-color: #5cb85c; /* Green for equals button */
+    color: #fff;
+    grid-column: span 2; /* Make equals button span two columns if desired, though spec implies 4x4 strict */
+    /* If equals should only span 1 column, remove the above line.
+       For this implementation, I'll assume a standard 4x4 grid without spanning,
+       as the spec's `grid-template-columns: repeat(4, 1fr)` implies strict 4 columns.
+       I will remove `grid-column: span 2;` to strictly adhere to the 4x4 grid implied.
+    */
+}
+
+.calculator-buttons button[data-type="equals"]:hover {
+    background-color: #4cae4c;
+}
+
+/* Optional: Style for the zero button to span two columns if needed,
+   but again, sticking to strict 4x4 as per spec.
+.calculator-buttons button[data-value="0"] {
+    grid-column: span 2;
+}
+*/
