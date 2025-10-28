@@ -1,145 +1,153 @@
-class Calculator {
-    constructor(previousOperandTextElement, currentOperandTextElement) {
-        this.previousOperandTextElement = previousOperandTextElement;
-        this.currentOperandTextElement = currentOperandTextElement;
-        this.clear();
-    }
+const calculator = {
+    displayValue: '0',
+    firstOperand: null,
+    waitingForSecondOperand: false,
+    operator: null,
+};
 
-    clear() {
-        this.currentOperand = '';
-        this.previousOperand = '';
-        this.operation = undefined;
-        // The updateDisplay method will handle showing '0' if currentOperand is empty.
-    }
+const displayElement = document.getElementById('display');
+const buttonsGrid = document.getElementById('buttons-grid');
 
-    appendNumber(number) {
-        if (number === '.' && this.currentOperand.includes('.')) {
-            return; // Prevent multiple decimal points
-        }
-        this.currentOperand = this.currentOperand.toString() + number.toString();
-    }
+/**
+ * Updates the text content of the `displayElement` with the current `calculator.displayValue`.
+ */
+function updateDisplay() {
+    displayElement.textContent = calculator.displayValue;
+}
 
-    chooseOperation(operation) {
-        if (this.currentOperand === '') {
-            return; // Do nothing if no current number to operate on
-        }
-        if (this.previousOperand !== '') {
-            this.compute(); // Resolve pending operation before storing a new one
-        }
-        this.operation = operation;
-        this.previousOperand = this.currentOperand;
-        this.currentOperand = ''; // Clear current operand for new input
-    }
+/**
+ * Resets the calculator's state to its initial values.
+ */
+function clearCalculator() {
+    calculator.displayValue = '0';
+    calculator.firstOperand = null;
+    calculator.waitingForSecondOperand = false;
+    calculator.operator = null;
+    updateDisplay();
+}
 
-    compute() {
-        let computation;
-        const prev = parseFloat(this.previousOperand);
-        const current = parseFloat(this.currentOperand);
-
-        if (isNaN(prev) || isNaN(current)) {
-            return; // Error handling: Abort if operands are missing or invalid
-        }
-
-        switch (this.operation) {
-            case '+':
-                computation = prev + current;
-                break;
-            case '-':
-                computation = prev - current;
-                break;
-            case '*':
-                computation = prev * current;
-                break;
-            case '/':
-                if (current === 0) {
-                    this.currentOperand = 'Error'; // Error handling: Division by zero
-                    this.operation = undefined;
-                    this.previousOperand = '';
-                    return;
-                }
-                computation = prev / current;
-                break;
-            default:
-                return; // No valid operation
-        }
-        this.currentOperand = computation.toString();
-        this.operation = undefined;
-        this.previousOperand = '';
-    }
-
-    getDisplayNumber(number) {
-        if (number === 'Error') {
-            return 'Error';
-        }
-        const stringNumber = number.toString();
-        const integerDigits = parseFloat(stringNumber.split('.')[0]);
-        const decimalDigits = stringNumber.split('.')[1];
-        let integerDisplay;
-
-        if (isNaN(integerDigits)) {
-            integerDisplay = '';
+/**
+ * Handles input of a number digit, appending it to the display or starting a new number.
+ * @param {string} digit - The digit (0-9) to be added to the display.
+ */
+function inputDigit(digit) {
+    if (calculator.waitingForSecondOperand === true) {
+        calculator.displayValue = digit;
+        calculator.waitingForSecondOperand = false;
+    } else {
+        if (calculator.displayValue === '0') {
+            calculator.displayValue = digit;
         } else {
-            integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
-        }
-
-        if (decimalDigits != null) {
-            return `${integerDisplay}.${decimalDigits}`;
-        } else {
-            return integerDisplay;
+            calculator.displayValue += digit;
         }
     }
+    updateDisplay();
+}
 
-    updateDisplay() {
-        // Display '0' if currentOperand is empty, otherwise display the formatted currentOperand
-        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand === '' ? '0' : this.currentOperand);
-
-        if (this.operation != null) {
-            this.previousOperandTextElement.innerText =
-                `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
-        } else {
-            this.previousOperandTextElement.innerText = '';
-        }
+/**
+ * Performs the specified arithmetic operation.
+ * @param {number} first - The first operand.
+ * @param {string} operator - The arithmetic operator (+, -, *, /).
+ * @param {number} second - The second operand.
+ * @returns {number | string} The result of the operation, or 'Error' for division by zero.
+ */
+function calculate(first, operator, second) {
+    switch (operator) {
+        case '+':
+            return first + second;
+        case '-':
+            return first - second;
+        case '*':
+            return first * second;
+        case '/':
+            if (second === 0) {
+                return 'Error'; // Division by zero
+            }
+            return first / second;
+        default:
+            return second; // Should not be reached with valid operators
     }
 }
 
-// 1. DOM Element Selection
-const numberButtons = document.querySelectorAll('[data-number]');
-const operatorButtons = document.querySelectorAll('[data-operator]');
-const equalsButton = document.querySelector('[data-equals]');
-const clearButton = document.querySelector('[data-all-clear]');
-const previousOperandTextElement = document.querySelector('[data-previous-operand]');
-const currentOperandTextElement = document.querySelector('[data-current-operand]');
+/**
+ * Executes the pending arithmetic operation when '=' is pressed or a new operator is chained.
+ */
+function performCalculation() {
+    if (calculator.firstOperand === null || calculator.operator === null) {
+        return; // Nothing to calculate yet
+    }
 
-// 2. Calculator Instantiation
-const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
+    const secondOperand = parseFloat(calculator.displayValue);
 
-// 3. Number Button Event Listeners
-numberButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.appendNumber(button.innerText);
-        calculator.updateDisplay();
-    });
+    // If the display value is not a valid number (e.g., 'Error' or empty after an operator)
+    if (isNaN(secondOperand)) {
+        return;
+    }
+
+    const result = calculate(calculator.firstOperand, calculator.operator, secondOperand);
+
+    calculator.displayValue = String(result);
+    // If there was an error, reset firstOperand to prevent further calculations with 'Error'
+    calculator.firstOperand = (result === 'Error') ? null : result;
+    calculator.waitingForSecondOperand = true;
+    calculator.operator = null; // Reset operator after calculation
+    updateDisplay();
+}
+
+/**
+ * Processes an operator button click, storing the first operand and the selected operator.
+ * @param {string} nextOperator - The operator (+, -, *, /) that was clicked.
+ */
+function handleOperator(nextOperator) {
+    const inputValue = parseFloat(calculator.displayValue);
+
+    // If firstOperand is null and inputValue is a valid number, store it as the first operand.
+    if (calculator.firstOperand === null && !isNaN(inputValue)) {
+        calculator.firstOperand = inputValue;
+    } else if (calculator.operator && !calculator.waitingForSecondOperand) {
+        // If an operator already exists and we're not waiting for a second operand,
+        // it means we're chaining operations (e.g., 5 + 3 +)
+        performCalculation();
+    }
+
+    calculator.waitingForSecondOperand = true;
+    calculator.operator = nextOperator;
+    updateDisplay();
+}
+
+// --- Initialization and Event Handling ---
+
+// Initial display update when the script loads
+updateDisplay();
+
+// Event Delegation: Attach a single event listener to the buttonsGrid container
+buttonsGrid.addEventListener('click', (event) => {
+    const { target } = event;
+
+    // Check if the clicked element is a button
+    if (!target.matches('button')) {
+        return;
+    }
+
+    const dataType = target.dataset.type;
+    const buttonText = target.textContent;
+
+    // Handle button clicks based on their data-type attribute
+    switch (dataType) {
+        case 'number':
+            inputDigit(buttonText);
+            break;
+        case 'operator':
+            handleOperator(buttonText);
+            break;
+        case 'clear':
+            clearCalculator();
+            break;
+        case 'equals':
+            performCalculation();
+            break;
+        default:
+            // Do nothing for other button types or non-buttons
+            break;
+    }
 });
-
-// 4. Operator Button Event Listeners
-operatorButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.chooseOperation(button.innerText);
-        calculator.updateDisplay();
-    });
-});
-
-// 5. Equals Button Event Listener
-equalsButton.addEventListener('click', () => {
-    calculator.compute();
-    calculator.updateDisplay();
-});
-
-// 6. Clear Button Event Listener
-clearButton.addEventListener('click', () => {
-    calculator.clear();
-    calculator.updateDisplay(); // Update display to '0' after clearing
-});
-
-// Initial display update when the page loads
-calculator.updateDisplay();
