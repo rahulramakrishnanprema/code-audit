@@ -1,0 +1,138 @@
+/*
+  Vanilla Scientific Calculator – CSS
+  Uses CSS custom properties for light/dark theming and responsive layout.
+*/
+
+:root {
+  --bg-light: #f5f5f5;
+  --bg-dark: #1e1e1e;
+  --text-light: #222222;
+  --text-dark: #eeeeee;
+  --primary: #4a90e2;
+  --primary-dark: #357ab8;
+  --button-bg: #ffffff;
+  --button-bg-dark: #2b2b2b;
+  --button-shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* Prefer‑color‑scheme – default to system */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--bg-dark);
+    --text-color: var(--text-dark);
+    --button-bg-color: var(--button-bg-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: var(--bg-light);
+    --text-color: var(--text-light);
+    --button-bg-color: var(--button-bg);
+  }
+}
+
+/* Dark mode override when user toggles */
+body.dark-mode {
+  --bg-color: var(--bg-dark);
+  --text-color: var(--text-dark);
+  --button-bg-color: var(--button-bg-dark);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.calculator {
+  background: var(--bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--button-shadow);
+  width: 340px;
+  max-width: 95vw;
+  padding: 1rem;
+}
+
+.display {
+  background: #00000010;
+  border-radius: 8px;
+  min-height: 3rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  text-align: right;
+  overflow-x: auto;
+  word-break: keep-all;
+  margin-bottom: 0.75rem;
+}
+
+.top-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.control-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.control-btn[aria-pressed="true"] {
+  background: var(--primary-dark);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.btn {
+  background: var(--button-bg-color);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px var(--button-shadow);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn[data-action="="] {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn[data-action="clear"] {
+  background: #e57373;
+  color: #fff;
+}
+
+@media (max-width: 400px) {
+  .display {
+    font-size: 1.2rem;
+  }
+  .btn {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+}
