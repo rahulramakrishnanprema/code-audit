@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scientific Calculator v2</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Scientific Calculator</h1>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark/light theme">
+      🌙
+    </button>
+  </header>
+
+  <main class="calculator" role="application" aria-label="Scientific calculator">
+    <section class="display-section">
+      <input
+        type="text"
+        id="display"
+        class="display"
+        readonly
+        aria-live="polite"
+        aria-label="Calculator display"
+        autocomplete="off"
+      />
+    </section>
+
+    <section class="control-section">
+      <div class="memory-panel" aria-label="Memory operations">
+        <button class="mem-btn" data-action="mem-clear" aria-label="Memory Clear">MC</button>
+        <button class="mem-btn" data-action="mem-recall" aria-label="Memory Recall">MR</button>
+        <button class="mem-btn" data-action="mem-add" aria-label="Memory Add">M+</button>
+        <button class="mem-btn" data-action="mem-sub" aria-label="Memory Subtract">M-</button>
+      </div>
+      <button id="angle-toggle" class="icon-btn" aria-label="Toggle angle mode (Deg/Rad)">Deg</button>
+    </section>
+
+    <section class="keypad" role="grid" aria-label="Calculator keypad">
+      <!-- First row -->
+      <button class="btn" data-action="clear" aria-label="Clear">C</button>
+      <button class="btn" data-action="backspace" aria-label="Backspace">←</button>
+      <button class="btn" data-action="paren" data-value="(" aria-label="Open parenthesis">(</button>
+      <button class="btn" data-action="paren" data-value=")" aria-label="Close parenthesis">)</button>
+
+      <!-- Second row -->
+      <button class="btn" data-action="func" data-value="sin" aria-label="Sine">sin</button>
+      <button class="btn" data-action="func" data-value="cos" aria-label="Cosine">cos</button>
+      <button class="btn" data-action="func" data-value="tan" aria-label="Tangent">tan</button>
+      <button class="btn" data-action="operator" data-value="/" aria-label="Divide">÷</button>
+
+      <!-- Third row -->
+      <button class="btn" data-action="func" data-value="asin" aria-label="Arcsine">asin</button>
+      <button class="btn" data-action="func" data-value="acos" aria-label="Arccosine">acos</button>
+      <button class="btn" data-action="func" data-value="atan" aria-label="Arctangent">atan</button>
+      <button class="btn" data-action="operator" data-value="*" aria-label="Multiply">×</button>
+
+      <!-- Fourth row -->
+      <button class="btn" data-action="func" data-value="log" aria-label="Log base 10">log</button>
+      <button class="btn" data-action="func" data-value="ln" aria-label="Natural log">ln</button>
+      <button class="btn" data-action="func" data-value="sqrt" aria-label="Square root">√</button>
+      <button class="btn" data-action="operator" data-value="-" aria-label="Subtract">−</button>
+
+      <!-- Fifth row -->
+      <button class="btn" data-action="func" data-value="exp" aria-label="Exponential (e^x)">eˣ</button>
+      <button class="btn" data-action="constant" data-value="π" aria-label="Pi">π</button>
+      <button class="btn" data-action="constant" data-value="e" aria-label="Euler's number">e</button>
+      <button class="btn" data-action="operator" data-value="+" aria-label="Add">+</button>
+
+      <!-- Sixth row -->
+      <button class="btn" data-action="func" data-value="factorial" aria-label="Factorial">x!</button>
+      <button class="btn" data-action="sign" aria-label="Toggle sign">±</button>
+      <button class="btn" data-action="digit" data-value="0" aria-label="Zero">0</button>
+      <button class="btn" data-action="decimal" data-value="." aria-label="Decimal point">.</button>
+
+      <!-- Seventh row -->
+      <button class="btn equal-btn" data-action="evaluate" aria-label="Equals">=</button>
+    </section>
+
+    <section class="error-toast" id="error-toast" role="alert" aria-live="assertive" hidden></section>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
