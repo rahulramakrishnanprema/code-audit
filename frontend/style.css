@@ -1,0 +1,297 @@
+/* --------------------------------------------------
+   Global Reset & Base Styles
+   -------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9fafb;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+/* --------------------------------------------------
+   Layout – Header & Navigation
+   -------------------------------------------------- */
+.header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav__list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav__link {
+    font-weight: 500;
+    color: #4b5563;
+    transition: color 0.2s;
+}
+
+.nav__link:hover {
+    color: #111827;
+}
+
+.nav__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger {
+    width: 24px;
+    height: 2px;
+    background: #111827;
+}
+
+/* --------------------------------------------------
+   Sections – General
+   -------------------------------------------------- */
+.section {
+    padding: 4rem 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section__title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #111827;
+}
+
+/* --------------------------------------------------
+   Hero Section
+   -------------------------------------------------- */
+.hero {
+    background: linear-gradient(135deg, #0066ff 0%, #33ccff 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.hero__title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero__subtitle {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------
+   About Section
+   -------------------------------------------------- */
+.about__text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #4b5563;
+    line-height: 1.8;
+}
+
+/* --------------------------------------------------
+   Skills Section
+   -------------------------------------------------- */
+.skills__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill__group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+.skill__group ul {
+    list-style: disc inside;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------
+   Projects Section
+   -------------------------------------------------- */
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project__card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.project__title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+.project__desc {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    color: #4b5563;
+}
+
+.project__stack {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* --------------------------------------------------
+   Experience Section
+   -------------------------------------------------- */
+.experience__item {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 1.5rem;
+    border-left: 4px solid #0066ff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.experience__company {
+    font-style: italic;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+}
+
+.experience__details {
+    list-style: disc inside;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------
+   Contact Section
+   -------------------------------------------------- */
+.contact__text {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #4b5563;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+}
+
+.contact__closing {
+    text-align: center;
+    font-size: 1rem;
+    color: #111827;
+}
+
+/* --------------------------------------------------
+   Footer
+   -------------------------------------------------- */
+.footer {
+    background: #111827;
+    color: #d1d5db;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* --------------------------------------------------
+   Responsive Adjustments
+   -------------------------------------------------- */
+@media (max-width: 768px) {
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .nav.open {
+        max-height: 300px; /* enough for all links */
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .nav__toggle {
+        display: flex;
+    }
+}
