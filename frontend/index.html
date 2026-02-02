@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scientific Calculator v2</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <h1 class="title">Scientific Calculator</h1>
+    <div class="toggles">
+      <button id="theme-toggle" class="toggle-btn" aria-pressed="false" aria-label="Toggle dark theme">
+        🌙
+      </button>
+      <button id="angle-toggle" class="toggle-btn" aria-pressed="false" aria-label="Toggle angle mode (Deg/Rad)">
+        Deg
+      </button>
+    </div>
+  </header>
+
+  <main class="calculator" role="main">
+    <section class="display-section" aria-label="Calculator display">
+      <input type="text" id="display" class="display" readonly aria-live="polite" aria-label="Calculator display" />
+      <div id="error" class="error" aria-live="assertive" role="alert"></div>
+    </section>
+
+    <section class="memory-section" aria-label="Memory operations">
+      <div class="memory-display" id="memory-display" aria-live="polite">M: 0</div>
+      <div class="memory-buttons">
+        <button class="mem-btn" data-action="MC" aria-label="Memory Clear">MC</button>
+        <button class="mem-btn" data-action="MR" aria-label="Memory Recall">MR</button>
+        <button class="mem-btn" data-action="M+" aria-label="Memory Add">M+</button>
+        <button class="mem-btn" data-action="M-" aria-label="Memory Subtract">M-</button>
+      </div>
+    </section>
+
+    <section class="button-panel" role="grid" aria-label="Calculator buttons">
+      <!-- Row 1 -->
+      <button class="calc-btn" data-value="MC" aria-label="Memory Clear">MC</button>
+      <button class="calc-btn" data-value="MR" aria-label="Memory Recall">MR</button>
+      <button class="calc-btn" data-value="M+" aria-label="Memory Add">M+</button>
+      <button class="calc-btn" data-value="M-" aria-label="Memory Subtract">M-</button>
+      <button class="calc-btn" data-value="C" aria-label="Clear">C</button>
+      <button class="calc-btn" data-value="DEL" aria-label="Delete">⌫</button>
+      <button class="calc-btn" data-value="/" aria-label="Divide">÷</button>
+      <button class="calc-btn" data-value="*" aria-label="Multiply">×</button>
+
+      <!-- Row 2 -->
+      <button class="calc-btn" data-value="sin" aria-label="Sine">sin</button>
+      <button class="calc-btn" data-value="cos" aria-label="Cosine">cos</button>
+      <button class="calc-btn" data-value="tan" aria-label="Tangent">tan</button>
+      <button class="calc-btn" data-value="asin" aria-label="Arcsine">asin</button>
+      <button class="calc-btn" data-value="acos" aria-label="Arccosine">acos</button>
+      <button class="calc-btn" data-value="atan" aria-label="Arctangent">atan</button>
+      <button class="calc-btn" data-value="(" aria-label="Open parenthesis">(</button>
+      <button class="calc-btn" data-value=")" aria-label="Close parenthesis">)</button>
+
+      <!-- Row 3 -->
+      <button class="calc-btn" data-value="7" aria-label="Seven">7</button>
+      <button class="calc-btn" data-value="8" aria-label="Eight">8</button>
+      <button class="calc-btn" data-value="9" aria-label="Nine">9</button>
+      <button class="calc-btn" data-value="%" aria-label="Modulo">%</button>
+      <button class="calc-btn" data-value="log" aria-label="Log base 10">log</button>
+      <button class="calc-btn" data-value="ln" aria-label="Natural log">ln</button>
+      <button class="calc-btn" data-value="sqrt" aria-label="Square root">√</button>
+      <button class="calc-btn" data-value="^" aria-label="Exponent">^</button>
+
+      <!-- Row 4 -->
+      <button class="calc-btn" data-value="4" aria-label="Four">4</button>
+      <button class="calc-btn" data-value="5" aria-label="Five">5</button>
+      <button class="calc-btn" data-value="6" aria-label="Six">6</button>
+      <button class="calc-btn" data-value="!" aria-label="Factorial">!</button>
+      <button class="calc-btn" data-value="exp" aria-label="Exponential">exp</button>
+      <button class="calc-btn" data-value="π" aria-label="Pi">π</button>
+      <button class="calc-btn" data-value="e" aria-label="Euler's number">e</button>
+      <button class="calc-btn" data-value="±" aria-label="Negate">±</button>
+
+      <!-- Row 5 -->
+      <button class="calc-btn" data-value="1" aria-label="One">1</button>
+      <button class="calc-btn" data-value="2" aria-label="Two">2</button>
+      <button class="calc-btn" data-value="3" aria-label="Three">3</button>
+      <button class="calc-btn" data-value="." aria-label="Decimal point">.</button>
+      <button class="calc-btn" data-value="Ans" aria-label="Previous answer">Ans</button>
+      <button class="calc-btn" data-value="" aria-label="Empty placeholder" disabled></button>
+      <button class="calc-btn" data-value="" aria-label="Empty placeholder" disabled></button>
+      <button class="calc-btn" data-value="" aria-label="Empty placeholder" disabled></button>
+
+      <!-- Row 6 -->
+      <button class="calc-btn" data-value="0" aria-label="Zero">0</button>
+      <button class="calc-btn" data-value="00" aria-label="Double zero">00</button>
+      <button class="calc-btn" data-value="=" aria-label="Equals" class="equals-btn">=</button>
+    </section>
+  </main>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
