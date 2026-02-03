@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scientific Calculator v2</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="calculator" role="application" aria-label="Scientific calculator">
+    <section class="display" aria-live="polite" aria-atomic="true">
+      <div id="display" class="display__screen" role="textbox" aria-label="Calculator display" tabindex="0"></div>
+    </section>
+    <section class="controls">
+      <div class="controls__top">
+        <label for="angle-mode" class="label">Angle Mode:</label>
+        <select id="angle-mode" class="select" aria-label="Select angle mode">
+          <option value="rad">Radians</option>
+          <option value="deg">Degrees</option>
+        </select>
+        <label for="mem-select" class="label">Memory Slot:</label>
+        <select id="mem-select" class="select" aria-label="Select memory slot">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <button id="mem-store" class="btn" aria-label="Store current result in memory">M+</button>
+        <button id="mem-recall" class="btn" aria-label="Recall value from memory">MR</button>
+        <button id="mem-clear" class="btn" aria-label="Clear memory slot">MC</button>
+      </div>
+      <div class="controls__grid">
+        <!-- Row 1: Functions -->
+        <button class="btn" data-action="func" data-func="sin" aria-label="sin">sin</button>
+        <button class="btn" data-action="func" data-func="cos" aria-label="cos">cos</button>
+        <button class="btn" data-action="func" data-func="tan" aria-label="tan">tan</button>
+        <button class="btn" data-action="func" data-func="asin" aria-label="asin">asin</button>
+        <button class="btn" data-action="func" data-func="acos" aria-label="acos">acos</button>
+        <button class="btn" data-action="func" data-func="atan" aria-label="atan">atan</button>
+        <button class="btn" data-action="func" data-func="log" aria-label="log10">log</button>
+        <button class="btn" data-action="func" data-func="ln" aria-label="ln">ln</button>
+        <!-- Row 2: Operators -->
+        <button class="btn" data-action="op" data-op="(" aria-label="left parenthesis">(</button>
+        <button class="btn" data-action="op" data-op=")" aria-label="right parenthesis">)</button>
+        <button class="btn" data-action="op" data-op="^" aria-label="exponent">^</button>
+        <button class="btn" data-action="op" data-op="*" aria-label="multiply">*</button>
+        <button class="btn" data-action="op" data-op="/" aria-label="divide">/</button>
+        <button class="btn" data-action="op" data-op="+" aria-label="add">+</button>
+        <button class="btn" data-action="op" data-op="-" aria-label="subtract">-</button>
+        <!-- Row 3: Numbers and decimal -->
+        <button class="btn" data-action="num" data-num="7" aria-label="seven">7</button>
+        <button class="btn" data-action="num" data-num="8" aria-label="eight">8</button>
+        <button class="btn" data-action="num" data-num="9" aria-label="nine">9</button>
+        <button class="btn" data-action="num" data-num="4" aria-label="four">4</button>
+        <button class="btn" data-action="num" data-num="5" aria-label="five">5</button>
+        <button class="btn" data-action="num" data-num="6" aria-label="six">6</button>
+        <button class="btn" data-action="num" data-num="1" aria-label="one">1</button>
+        <button class="btn" data-action="num" data-num="2" aria-label="two">2</button>
+        <button class="btn" data-action="num" data-num="3" aria-label="three">3</button>
+        <button class="btn" data-action="num" data-num="0" aria-label="zero">0</button>
+        <button class="btn" data-action="num" data-num="." aria-label="decimal point">.</button>
+        <button class="btn" data-action="op" data-op="!" aria-label="factorial">!</button>
+        <!-- Row 4: Control buttons -->
+        <button id="clear-all" class="btn" aria-label="Clear all">C</button>
+        <button id="clear-entry" class="btn" aria-label="Clear entry">CE</button>
+        <button id="backspace" class="btn" aria-label="Backspace">←</button>
+        <button id="equals" class="btn equals" aria-label="Equals">=</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
