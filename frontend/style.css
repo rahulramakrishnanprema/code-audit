@@ -1,0 +1,157 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header (Hero) */
+#hero {
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: #fff;
+  text-align: center;
+  padding: 120px 0 80px;
+}
+#hero h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+#hero .tagline {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+#hero .summary {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Navbar */
+#navbar {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+#navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 10px 0;
+}
+#navbar li {
+  margin: 0 15px;
+}
+#navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+#navbar a:hover {
+  color: #4e54c8;
+}
+
+/* Sections */
+section {
+  padding: 80px 0;
+}
+section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: #4e54c8;
+}
+
+/* Skills */
+.skill-category {
+  margin-bottom: 30px;
+}
+.skill-category h3 {
+  margin-bottom: 10px;
+  color: #4e54c8;
+}
+.skill-category ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* Projects */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.project-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.project-card h3 {
+  margin-top: 0;
+}
+.tech-stack {
+  font-style: italic;
+  color: #555;
+}
+
+/* Experience */
+#experience h3 {
+  margin-top: 0;
+  color: #4e54c8;
+}
+
+/* Contact */
+#contact .contact-links {
+  text-align: center;
+  margin-top: 20px;
+}
+#contact .contact-links a {
+  color: #4e54c8;
+  text-decoration: none;
+  margin: 0 5px;
+}
+#contact .contact-links a:hover {
+  text-decoration: underline;
+}
+#contact .closing {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #hero h1 {
+    font-size: 2.5rem;
+  }
+  #hero .tagline {
+    font-size: 1.2rem;
+  }
+}
