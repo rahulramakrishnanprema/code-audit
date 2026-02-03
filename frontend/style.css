@@ -1,0 +1,125 @@
+/* Basic Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f4f4f4;
+  color: #333;
+  padding: 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#calendar-section, #tasks-section {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  flex: 1 1 300px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-table th, .calendar-table td {
+  width: 14.28%;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.calendar-table td {
+  cursor: pointer;
+}
+
+.calendar-table td:hover {
+  background: #e0e0e0;
+}
+
+.calendar-table .selected {
+  background: #007bff;
+  color: #fff;
+  border-radius: 50%;
+}
+
+#tasks-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+#tasks-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+#tasks-list li.completed .task-title {
+  text-decoration: line-through;
+  color: #777;
+}
+
+.task-actions button {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.form-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  main {
+    flex-direction: column;
+  }
+}

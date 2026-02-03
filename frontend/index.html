@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self';">
+  <title>Daily Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Daily Planner</h1>
+  </header>
+
+  <main>
+    <section id="calendar-section">
+      <div class="calendar-header">
+        <button id="prev-month" aria-label="Previous month">&#9664;</button>
+        <h2 id="month-year"></h2>
+        <button id="next-month" aria-label="Next month">&#9654;</button>
+      </div>
+      <table id="calendar" class="calendar-table">
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="tasks-section">
+      <h2 id="tasks-date">Tasks for <span id="selected-date">--</span></h2>
+      <ul id="tasks-list"></ul>
+      <form id="task-form">
+        <input type="hidden" id="task-id" value="">
+        <input type="hidden" id="task-date" value="">
+        <div class="form-group">
+          <label for="task-title">Title</label>
+          <input type="text" id="task-title" required>
+        </div>
+        <div class="form-group">
+          <label for="task-desc">Description</label>
+          <textarea id="task-desc" rows="3"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" id="save-task">Save</button>
+          <button type="button" id="cancel-edit" style="display:none;">Cancel</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
