@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Calculator v2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calculator" role="application" aria-label="Scientific Calculator">
+    <!-- Display Panel -->
+    <div class="display" aria-live="polite" aria-atomic="true">
+      <div class="expression" id="expression" aria-label="Expression"></div>
+      <div class="result" id="result" aria-label="Result"></div>
+    </div>
+
+    <!-- Button Grid -->
+    <div class="buttons">
+      <!-- Row 1: Memory & Mode Buttons -->
+      <button class="btn memory" data-action="mc" aria-label="Clear Memory">MC</button>
+      <button class="btn memory" data-action="mr" aria-label="Recall Memory">MR</button>
+      <button class="btn memory" data-action="m+" aria-label="Memory Add">M+</button>
+      <button class="btn memory" data-action="m-" aria-label="Memory Subtract">M-</button>
+      <button class="btn toggle" data-action="angle" aria-label="Toggle Angle Mode">Deg</button>
+      <button class="btn toggle" data-action="theme" aria-label="Toggle Theme">🌙</button>
+
+      <!-- Row 2: Functions -->
+      <button class="btn func" data-value="sin(" aria-label="Sine">sin</button>
+      <button class="btn func" data-value="cos(" aria-label="Cosine">cos</button>
+      <button class="btn func" data-value="tan(" aria-label="Tangent">tan</button>
+      <button class="btn func" data-value="asin(" aria-label="Inverse Sine">asin</button>
+      <button class="btn func" data-value="acos(" aria-label="Inverse Cosine">acos</button>
+      <button class="btn func" data-value="atan(" aria-label="Inverse Tangent">atan</button>
+
+      <!-- Row 3: Numbers & Operators -->
+      <button class="btn num" data-value="7" aria-label="Seven">7</button>
+      <button class="btn num" data-value="8" aria-label="Eight">8</button>
+      <button class="btn num" data-value="9" aria-label="Nine">9</button>
+      <button class="btn op" data-value="/" aria-label="Divide">÷</button>
+      <button class="btn func" data-value="log(" aria-label="Logarithm (base 10)">log</button>
+      <button class="btn func" data-value="ln(" aria-label="Natural Logarithm">ln</button>
+
+      <button class="btn num" data-value="4" aria-label="Four">4</button>
+      <button class="btn num" data-value="5" aria-label="Five">5</button>
+      <button class="btn num" data-value="6" aria-label="Six">6</button>
+      <button class="btn op" data-value="*" aria-label="Multiply">×</button>
+      <button class="btn func" data-value="exp(" aria-label="Exponential">exp</button>
+      <button class="btn func" data-value="sqrt(" aria-label="Square Root">√</button>
+
+      <button class="btn num" data-value="1" aria-label="One">1</button>
+      <button class="btn num" data-value="2" aria-label="Two">2</button>
+      <button class="btn num" data-value="3" aria-label="Three">3</button>
+      <button class="btn op" data-value="-" aria-label="Subtract">−</button>
+      <button class="btn func" data-value="factorial(" aria-label="Factorial">n!</button>
+      <button class="btn func" data-value="^(" aria-label="Power">^</button>
+
+      <button class="btn num" data-value="0" aria-label="Zero">0</button>
+      <button class="btn num" data-value="." aria-label="Decimal Point">.</button>
+      <button class="btn op" data-value="(" aria-label="Open Parenthesis">(</button>
+      <button class="btn op" data-value=")" aria-label="Close Parenthesis">)</button>
+      <button class="btn op" data-value="+" aria-label="Add">+</button>
+      <button class="btn eval" data-action="equals" aria-label="Equals">=</button>
+    </div>
+
+    <!-- Error Toast -->
+    <div class="toast" id="error-toast" role="alert" aria-live="assertive" hidden></div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
