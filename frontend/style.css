@@ -1,0 +1,150 @@
+/* Reset & Basic styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.calculator {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 420px;
+}
+.display {
+  background: #222;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin-bottom: 0.5rem;
+  min-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.expression {
+  font-size: 1.2rem;
+  text-align: right;
+  overflow-x: auto;
+}
+.result {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: right;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 0.3rem;
+}
+.btn {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  background: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: #d5d5d5;
+}
+.btn:active {
+  background: #c9c9c9;
+}
+.btn.equal {
+  background: #4caf50;
+  color: #fff;
+}
+.btn.equal:hover {
+  background: #45a044;
+}
+.btn.equal:active {
+  background: #3e8e41;
+}
+.btn.clear {
+  background: #f44336;
+  color: #fff;
+}
+.btn.clear:hover {
+  background: #e53935;
+}
+.btn.clear:active {
+  background: #d32f2f;
+}
+.btn.mem {
+  background: #ff9800;
+  color: #fff;
+}
+.btn.mem:hover {
+  background: #fb8c00;
+}
+.btn.mem:active {
+  background: #f57c00;
+}
+.btn.angle {
+  background: #2196f3;
+  color: #fff;
+}
+.btn.angle:hover {
+  background: #1e88e5;
+}
+.btn.angle:active {
+  background: #1976d2;
+}
+/* High Contrast Mode */
+[data-theme="high-contrast"] {
+  background-color: #000;
+  color: #fff;
+}
+[data-theme="high-contrast"] .calculator {
+  background: #000;
+  box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+}
+[data-theme="high-contrast"] .display {
+  background: #fff;
+  color: #000;
+}
+[data-theme="high-contrast"] .btn {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+[data-theme="high-contrast"] .btn:hover {
+  background: #333;
+}
+[data-theme="high-contrast"] .btn.equal {
+  background: #0f0;
+  color: #000;
+}
+[data-theme="high-contrast"] .btn.clear {
+  background: #f00;
+  color: #000;
+}
+[data-theme="high-contrast"] .btn.mem {
+  background: #ff0;
+  color: #000;
+}
+[data-theme="high-contrast"] .btn.angle {
+  background: #00f;
+  color: #fff;
+}
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  .display {
+    min-height: 2.5rem;
+  }
+}
